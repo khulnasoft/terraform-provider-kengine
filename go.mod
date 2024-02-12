@@ -1,4 +1,4 @@
-module github.com/baselime/terraform-provider-baselime
+module github.com/khuln 
 
 go 1.20
 

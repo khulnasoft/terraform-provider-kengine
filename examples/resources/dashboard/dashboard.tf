@@ -1,5 +1,5 @@
 
-resource "baselime_query" "terraformed" {
+resource "Kengine_query" "terraformed" {
   name        = "terraformed-query"
   description = "This query was created by Terraform"
   datasets    = ["lambda-logs"]
@@ -37,12 +37,12 @@ resource "baselime_query" "terraformed" {
   }
 }
 
-resource "baselime_dashboard" "terraformed" {
+resource "Kengine_dashboard" "terraformed" {
   name        = "terraformed-dashboard"
   description = "This alert was created by Terraform"
   widgets = [
     {
-      query_id    = baselime_query.terraformed.id
+      query_id    = Kengine_query.terraformed.id
       type        = "timeseries"
       name        = "Line Chart"
       description = "This is a line chart"

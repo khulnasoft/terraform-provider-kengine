@@ -1,4 +1,4 @@
-resource "baselime_query" "terraformed" {
+resource "Kengine_query" "terraformed" {
   name        = "terraformed-query"
   description = "This query was created by Terraform"
   datasets    = ["lambda-logs"]

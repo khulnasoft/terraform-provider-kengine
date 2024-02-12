@@ -2,7 +2,7 @@ package provider
 
 import (
 	"context"
-	"github.com/baselime/terraform-provider-baselime/client"
+	"github.com/khulnasoft/terraform-provider-kengine/client"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
@@ -10,18 +10,18 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-// Ensure BaselimeProvider satisfies various provider interfaces.
-var _ provider.Provider = &BaselimeProvider{}
+// Ensure KengineProvider satisfies various provider interfaces.
+var _ provider.Provider = &KengineProvider{}
 
-// BaselimeProvider defines the provider implementation.
-type BaselimeProvider struct {
+// KengineProvider defines the provider implementation.
+type KengineProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
 }
 
-type BaselimeResourceData struct {
+type KengineResourceData struct {
 	Client *client.Client
 }
 
@@ -29,19 +29,19 @@ type DataSourceData struct {
 	Client *client.Client
 }
 
-// BaselimeProviderModel describes the provider data model.
-type BaselimeProviderModel struct {
+// KengineProviderModel describes the provider data model.
+type KengineProviderModel struct {
 	ApiHost   types.String `tfsdk:"api_host"`
 	ApiKey    types.String `tfsdk:"api_key" sensitive:"true"`
 	ApiScheme types.String `tfsdk:"api_scheme"`
 }
 
-func (p *BaselimeProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "baselime"
+func (p *KengineProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
+	resp.TypeName = "kengine "
 	resp.Version = p.version
 }
 
-func (p *BaselimeProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+func (p *KengineProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"api_host": schema.StringAttribute{
@@ -57,9 +57,9 @@ func (p *BaselimeProvider) Schema(ctx context.Context, req provider.SchemaReques
 	}
 }
 
-func (p *BaselimeProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+func (p *KengineProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 
-	var data BaselimeProviderModel
+	var data KengineProviderModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -79,12 +79,12 @@ func (p *BaselimeProvider) Configure(ctx context.Context, req provider.Configure
 	resp.DataSourceData = &DataSourceData{
 		Client: c,
 	}
-	resp.ResourceData = &BaselimeResourceData{
+	resp.ResourceData = &KengineResourceData{
 		Client: c,
 	}
 }
 
-func (p *BaselimeProvider) Resources(ctx context.Context) []func() resource.Resource {
+func (p *KengineProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewQueryResource,
 		NewAlertResource,
@@ -92,13 +92,13 @@ func (p *BaselimeProvider) Resources(ctx context.Context) []func() resource.Reso
 	}
 }
 
-func (p *BaselimeProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+func (p *KengineProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{}
 }
 
 func New(version string) func() provider.Provider {
 	return func() provider.Provider {
-		return &BaselimeProvider{
+		return &KengineProvider{
 			version: version,
 		}
 	}

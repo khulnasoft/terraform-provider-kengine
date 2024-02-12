@@ -8,8 +8,8 @@ import (
 
 func TestClient_GetQueries(t *testing.T) {
 	config := &Config{
-		APIHost: "go.baselime.io",
-		APIKey:  os.Getenv("BASELIME_API_KEY"),
+		APIHost: "go.kengine.khulnasoft.com",
+		APIKey:  os.Getenv("KENGINE_API_KEY"),
 	}
 	c := NewClient(config)
 	q, err := c.GetQuery(context.Background(), "terraformed-query")
@@ -60,10 +60,10 @@ func TestClient_CreateQuery(t *testing.T) {
 		},
 	}
 	config := &Config{
-		APIHost: "go.baselime.io",
+		APIHost: "go.kengine.khulnasoft.com",
 		//APIHost:   "localhost:32768",
 		//ApiScheme: "http",
-		APIKey: os.Getenv("BASELIME_API_KEY"),
+		APIKey: os.Getenv("KENGINE_API_KEY"),
 	}
 	c := NewClient(config)
 	err := c.CreateQuery(context.Background(), q)
