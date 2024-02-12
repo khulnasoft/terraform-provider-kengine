@@ -1,17 +1,17 @@
 terraform {
   required_providers {
-    baselime = {
+    kengine  = {
       version = "~> 0.1.5"
-      source  = "baselime/baselime"
+      source  = "khulnasoft/kengine"
     }
   }
 }
 
-provider "baselime" {
+provider "kengine " {
   api_key = "your_api_key"
 }
 
-resource "baselime_query" "terraformed" {
+resource "Kengine_query" "terraformed" {
   name        = "terraformed-query"
   description = "This query was created by Terraform"
   datasets    = ["lambda-logs"]
@@ -49,17 +49,17 @@ resource "baselime_query" "terraformed" {
   }
 }
 
-resource "baselime_alert" "terraformed" {
+resource "Kengine_alert" "terraformed" {
   name        = "terraformed-alert"
   description = "This alert was created by Terraform"
   enabled     = true
   channels = [
     {
       type    = "email"
-      targets = ["foo@baselime.io"]
+      targets = ["foo@kengine.khulnasoft.com"]
     }
   ]
-  query = baselime_query.terraformed.id
+  query = Kengine_query.terraformed.id
   threshold = {
     operator = "GREATER_THAN"
     value    = 0
@@ -68,12 +68,12 @@ resource "baselime_alert" "terraformed" {
   window    = "5m"
 }
 
-resource "baselime_dashboard" "terraformed" {
+resource "Kengine_dashboard" "terraformed" {
   name        = "terraformed-dashboard"
   description = "This alert was created by Terraform"
   widgets = [
     {
-      query_id    = baselime_query.terraformed.id
+      query_id    = Kengine_query.terraformed.id
       type        = "timeseries"
       name        = "Line Chart"
       description = "This is a line chart"

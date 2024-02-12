@@ -8,7 +8,7 @@ import (
 	"flag"
 	"log"
 
-	"github.com/baselime/terraform-provider-baselime/internal/provider"
+	"github.com/khulnasoft/terraform-provider-kengine/internal/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 )
 
@@ -38,7 +38,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/baselime/baselime",
+		Address: "registry.terraform.io/khulnasoft/kengine",
 		Debug:   debug,
 	}
 

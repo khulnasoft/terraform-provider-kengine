@@ -1,5 +1,5 @@
 
-resource "baselime_query" "terraformed" {
+resource "Kengine_query" "terraformed" {
   name        = "terraformed-query"
   description = "This query was created by Terraform"
   datasets    = ["lambda-logs"]
@@ -37,17 +37,17 @@ resource "baselime_query" "terraformed" {
   }
 }
 
-resource "baselime_alert" "terraformed" {
+resource "Kengine_alert" "terraformed" {
   name        = "terraformed-alert"
   description = "This alert was created by Terraform"
   enabled     = true
   channels = [
     {
       type    = "email"
-      targets = ["foo@baselime.io"]
+      targets = ["foo@kengine.khulnasoft.com"]
     }
   ]
-  query = baselime_query.terraformed.id
+  query = Kengine_query.terraformed.id
   threshold = {
     operator = "GREATER_THAN"
     value    = 0

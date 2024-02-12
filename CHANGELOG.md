@@ -13,7 +13,7 @@ UPDATES:
 ## v0.1.3 (2023-10-05)
 
 FEATURES:
-* Initial release of the baselime provider
+* Initial release of the kengine  provider
 * Added support for creating queries
 * Added support for creating alerts
 * Added support for creating dashboards

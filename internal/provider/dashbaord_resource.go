@@ -3,8 +3,8 @@ package provider
 import (
 	"context"
 	"fmt"
-	"github.com/baselime/terraform-provider-baselime/client"
-	"github.com/baselime/terraform-provider-baselime/internal/models"
+	"github.com/khulnasoft/terraform-provider-kengine/client"
+	"github.com/khulnasoft/terraform-provider-kengine/internal/models"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -63,11 +63,11 @@ func (r *DashboardResource) Configure(ctx context.Context, req resource.Configur
 		return
 	}
 
-	provider, ok := req.ProviderData.(*BaselimeResourceData)
+	provider, ok := req.ProviderData.(*KengineResourceData)
 	if !ok {
 		resp.Diagnostics.AddError(
 			"Unexpected Provider Configure Type",
-			fmt.Sprintf("Expected *BaselimeProviderModel, got: %T. Please report this issue to the provider developers.", req.ProviderData),
+			fmt.Sprintf("Expected *KengineProviderModel, got: %T. Please report this issue to the provider developers.", req.ProviderData),
 		)
 		return
 	}

@@ -35,10 +35,10 @@ func NewClient(config *Config) *Client {
 }
 
 func defaultConfig() *Config {
-	apiKey := os.Getenv("BASELIME_API_KEY")
-	apiHost := os.Getenv("BASELIME_API_HOST")
+	apiKey := os.Getenv("KENGINE_API_KEY")
+	apiHost := os.Getenv("KENGINE_API_HOST")
 	if apiHost == "" {
-		apiHost = "go.baselime.io"
+		apiHost = "go.kengine.khulnasoft.com"
 	}
 	return &Config{
 		"0.1.1",
@@ -71,7 +71,7 @@ func (adt *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, err
 	req.URL.Scheme = adt.config.ApiScheme
 	req.URL.Host = adt.config.APIHost
 	req.Header.Add("x-api-key", adt.config.APIKey)
-	req.Header.Add("User-Agent", fmt.Sprintf("baselime-io-terraform-provider/%s", adt.config.Version))
+	req.Header.Add("User-Agent", fmt.Sprintf("kengine.khulnasoft.com-terraform-provider/%s", adt.config.Version))
 	req.Header.Add("Content-Type", "application/json")
 	return adt.Transport.RoundTrip(req)
 }

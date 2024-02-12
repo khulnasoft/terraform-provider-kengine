@@ -66,20 +66,20 @@ jobs:
           channel-id: 'C04KT9JNRHS'
           payload: |
             {
-              "text": "[Release] Baselime Terraform Provider v${{ steps.tag_name.outputs.current_version }}",
+              "text": "[Release] Kengine Terraform Provider v${{ steps.tag_name.outputs.current_version }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*[Release] Baselime Terraform Provider v${{ steps.tag_name.outputs.current_version }}*"
+                    "text": "*[Release] Kengine Terraform Provider v${{ steps.tag_name.outputs.current_version }}*"
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "<https://github.com/baselime/terraform-provider-baselime/releases/tag/v${{ steps.tag_name.outputs.current_version }}|https://github.com/baselime/terraform-provider-baselime/releases/tag/v${{ steps.tag_name.outputs.current_version }}>"
+                    "text": "<https://github.com/khulnasoft/terraform-provider-kengine/releases/tag/v${{ steps.tag_name.outputs.current_version }}|https://github.com/khulnasoft/terraform-provider-kengine/releases/tag/v${{ steps.tag_name.outputs.current_version }}>"
                   }
                 }
               ]
